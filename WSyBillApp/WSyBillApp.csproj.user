@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup />
+  <ItemGroup>
+    <Compile Update="FormsTasks\FormDealers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FormsTasks\FormPreferences.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FormsTasks\FormProducts.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FormsTasks\FormPurchases.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FormsTasks\FormReports.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FormsTasks\FormSales.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FormsTasks\TasksGeneral.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="WSBillingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
+</Project>

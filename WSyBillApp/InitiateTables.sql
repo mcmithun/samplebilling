@@ -1,0 +1,78 @@
+﻿-- SQLite
+CREATE TABLE IF NOT EXISTS PURCHASE (
+	ID integer PRIMARY KEY AUTOINCREMENT,
+	BILLNO string,
+	ITEM_ID integer,
+	SELLER_ID integer,
+	DATE datetime,
+	QUANTITY integer,
+	TAX float,
+	PRICE_PMRP float,
+    FOREIGN KEY(ITEM_ID) REFERENCES ITEM(ID),
+    FOREIGN KEY(SELLER_ID) REFERENCES DEALER(ID),
+    FOREIGN KEY(BILLNO) REFERENCES DEALER(ID)
+);
+INSERT INTO PURCHASE 
+VALUES(1, "default", 1, 1, datetime('now'), 1, 1.00, 1.00);
+
+CREATE TABLE IF NOT EXISTS SALE_BILL (
+	ID integer PRIMARY KEY AUTOINCREMENT,
+	INVOICE string,
+	DISCOUNT float,
+	TAX_SST float,
+	TAX_CST float,
+	TAX_GST float,
+	SUM float,
+	TYPEOFPAY integer,
+	DATE datetime
+);
+INSERT INTO SALE_BILL 
+VALUES(1, "default", 1.0, 1.0, 1.0, 1.0, 1.0, 1, datetime('now'));
+
+CREATE TABLE IF NOT EXISTS SALE (
+	ID integer PRIMARY KEY AUTOINCREMENT,
+	INVOICE string,
+	DATE datetime,
+	DEALER_ID integer,
+	ITEM_ID integer,
+	QUANTITY integer,
+	TAX float,
+	UNIT_PRICE float,
+	PRICE float,
+    FOREIGN KEY(DEALER_ID) REFERENCES DEALER(ID),  
+    FOREIGN KEY(ITEM_ID) REFERENCES ITEM(ID)
+);
+INSERT INTO SALE 
+VALUES(1, "INV-default", datetime('now'), 1, 1, 0, 1, 1.00, 1.00);
+
+CREATE TABLE IF NOT EXISTS TAX (
+	ID integer PRIMARY KEY AUTOINCREMENT,
+	VALUE float,
+	UNIQUE(VALUE)
+);
+INSERT INTO TAX VALUES(1, 3.00);
+
+CREATE TABLE IF NOT EXISTS DEALER (
+	ID integer PRIMARY KEY AUTOINCREMENT,
+	GSTIN string,
+	NAME string,
+	PHONE string,
+	ADDRESS string,
+	CATEGORY boolean,
+	UNIQUE(PHONE)
+);
+INSERT INTO DEALER 
+VALUES(1, "default", "default", "default", "default", false);
+
+CREATE TABLE IF NOT EXISTS ITEM (
+	ID integer PRIMARY KEY AUTOINCREMENT,
+	NAME string,
+	TYPE string,
+	TAXSLAB float,
+	VARIABLE float,
+	PUNIT_PRICE float,
+	PMRP_PRICE float,
+	MRP_PRICE float
+);
+INSERT INTO ITEM 
+VALUES(1, "default", "default", 3.00, 0.00, 60.00, 70.80, 100.00);
